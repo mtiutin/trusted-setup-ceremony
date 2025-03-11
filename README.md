@@ -84,8 +84,7 @@ Select **one** of the following contribution methods:
 #### Option A: Using Pre-built Docker Image
 
 ```bash
-docker run --user $(id -u):$(id -g) --rm -it --env-file .env -v
- $(pwd)/contributions:/app/contributions pantherprotocol/trusted-setup-ceremony:latest contribute
+docker run --user $(id -u):$(id -g) --rm -it --env-file .env -v $(pwd)/contributions:/app/contributions pantherprotocol/trusted-setup-ceremony:latest contribute
 ```
 
 #### Option B: Build Docker Image Yourself (Recommended)
@@ -294,3 +293,11 @@ If you are coordinating the ceremony:
 2. Push this initial setup to the repository
 3. Regular verification helps ensure the integrity of each contribution
 4. Monitor the verification summary table for any failed verifications
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+This repository is heavily borrowed from the [WJ's multisetups repository](https://github.com/privacy-scaling-explorations/multisetups). We would like to express our gratitude to Wei Jie Koh (WJ) for their significant contribution to the zero-knowledge community and for developing the original codebase that made this trusted setup ceremony possible.
