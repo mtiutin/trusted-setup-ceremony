@@ -16,12 +16,12 @@ The ceremony is sequential - each participant builds upon the previous contribut
 
 Contributors have multiple options to participate in the Ceremony, each with different prerequisites:
 
-- **Option A & B: Running Inside a Docker Container**  
-  In this approach, [Docker](https://docs.docker.com/get-docker/) must be installed. This eliminates the need for locally installing [Node.js](https://nodejs.org/en/download) and [AWS CLI](https://aws.amazon.com/cli/), as the Docker container is pre-configured with everything required for the ceremony.  
-  Running inside a container ensures the ceremony operates in an isolated environment, minimizing interference from the host system. It is the **recommended option** for most contributors.  
+- **Option A & B: Running Inside a Docker Container**
+  In this approach, [Docker](https://docs.docker.com/get-docker/) must be installed. This eliminates the need for locally installing [Node.js](https://nodejs.org/en/download) and [AWS CLI](https://aws.amazon.com/cli/), as the Docker container is pre-configured with everything required for the ceremony.
+  Running inside a container ensures the ceremony operates in an isolated environment, minimizing interference from the host system. It is the **recommended option** for most contributors.
   Participants can choose between using a **pre-built Docker image** (Option A) or building the Docker image locally (Option B).
 
-- **Option C: Running Without Docker (Directly on the Computer)**  
+- **Option C: Running Without Docker (Directly on the Computer)**
   In this method, contributors run the ceremony scripts directly on their computer without requiring [Docker](https://docs.docker.com/get-docker/). However, in this case, both [Node.js](https://nodejs.org/en/download) and [AWS CLI](https://aws.amazon.com/cli/) must be installed locally. This setup is less isolated than running inside a Docker container but can be used if Docker is unavailable.
 
 ### General Requirements:
@@ -59,22 +59,22 @@ While following these recommendations provides maximum security, any contributio
 
 ### 2. Set Up Environment Variables
 
-1. **Create the `.env` File**  
+1. **Create the `.env` File**
    Copy the provided `.env.example` file to create a new `.env` file:
    ```bash
    cp .env.example .env
    ```
 
-2. **Edit the `.env` File**  
+2. **Edit the `.env` File**
    Open the newly created `.env` file in your preferred text editor (e.g., `nano`, `vim`, or a GUI-based editor) and customize the values, especially by filling in your AWS credentials. For example:
    ```bash
    nano .env
    ```
 
-3. **Customize S3 Configuration**  
+3. **Customize S3 Configuration**
    Update the file with your AWS access details (e.g., `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`, `S3BUCKET`).
 
-4. **Default Configuration**  
+4. **Default Configuration**
    If you do not modify the S3 bucket information, the ceremony will use the default bucket `trusted-setup-files`, located in the `us-east-1` region.
 
 ### 3. Contribute to the Ceremony
@@ -99,7 +99,6 @@ docker run --user $(id -u):$(id -g) --rm -it --env-file .env -v $(pwd)/contribut
 
 ```bash
 npm install
-source .env
 npm run contribute
 ```
 
@@ -185,30 +184,6 @@ If standard contribution methods fail, consider:
 2. Sharing files via secure cloud storage (Google Drive, Dropbox)
 3. Using [Magic-Wormhole](https://magic-wormhole.readthedocs.io/) for secure file transfer
 
-## Platform-Specific Instructions
-
-### Linux and macOS
-
-The commands provided in this guide work natively on Linux and macOS systems.
-
-### Windows
-
-For Windows users, adjust commands as follows:
-
-**PowerShell:**
-```powershell
-docker run--user $(id -u):$(id -g) --rm -it --env-file .env -v ${PWD}/contributions:/app/contributions pantherprotocol/trusted-setup-ceremony contribute
-```
-
-**Command Prompt:**
-```cmd
-docker run --user $(id -u):$(id -g) --rm -it --env-file .env -v %cd%/contributions:/app/contributions pantherprotocol/trusted-setup-ceremony contribute
-```
-
-**For path-related issues**, use absolute paths:
-```cmd
-docker run --user $(id -u):$(id -g) --rm -it --env-file .env -v C:\full\path\to\trusted-setup-contributions:/app/contributions pantherprotocol/trusted-setup-ceremony contribute
-```
 
 ## Verification Guide
 
@@ -218,7 +193,7 @@ This section provides detailed information about the verification process, inclu
 
 When running verification, the following will happen automatically if files are missing:
 
-- **PTAU File**: The Powers of Tau file (powersOfTau28_hez_final_17.ptau) will be downloaded from S3 if not found locally
+- **PTAU File**: The Powers of Tau file (powersOfTau28_hez_final_18.ptau) will be downloaded from S3 if not found locally
 - **Initial Setup**: If the initial setup folder (0000_initial) isn't present locally, it will be downloaded
 - **Contribution Folders**:
   - If you have no contribution folders or only the initial setup folder, **all** contributions will be downloaded from S3
