@@ -1,0 +1,31 @@
+{
+  "contributor": "toxicehc",
+  "contributionNumber": "0002",
+  "timestamp": "2025-03-12T11:10:48.255Z",
+  "files": [
+    {
+      "filename": "prpConverter.zkey",
+      "hash": "81df3beca0b7d0db881819eb18c8233450b00b1ec8bbb2bd6086e247dd617665"
+    },
+    {
+      "filename": "treeBatchUpdaterAndRootChecker.zkey",
+      "hash": "7858bda0c864cb8ea002f84ce7fedb2d9d76e69737f5321706d4635c57ad096e"
+    },
+    {
+      "filename": "zAccountRegistration.zkey",
+      "hash": "7537a01f383d1b22fb78df644e4add0998ed18121c156c1173166419befb6bfa"
+    },
+    {
+      "filename": "zAccountRenewal.zkey",
+      "hash": "264129e4e235c4ffb5edfebfdb63439c6aec34e38f142bcb348b63a6a6547def"
+    },
+    {
+      "filename": "zSwap.zkey",
+      "hash": "0e7fe9308c2feca9ea0c09ee4c1633df20b047e33d4452fea18de16d8d49af6d"
+    },
+    {
+      "filename": "zTransaction.zkey",
+      "hash": "fa944f5db3c4c2d520aa020233ddeab015e8cfdbcdca918af1883207665d93e6"
+    }
+  ]
+}
