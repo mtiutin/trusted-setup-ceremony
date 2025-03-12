@@ -82,7 +82,7 @@ export function getCircuitR1cs(initialFolder: string): string {
 }
 
 // Check if AWS CLI is available
-function isAwsCliAvailable(): boolean {
+export function isAwsCliAvailable(): boolean {
   try {
     execSync("aws --version", { stdio: "ignore" });
     return true;

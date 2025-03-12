@@ -3,7 +3,7 @@ import { execSync } from "child_process";
 import * as readlineSync from "readline-sync";
 import * as path from "path";
 import * as crypto from "crypto";
-import { contributionRootFolder, getContributionFolders, getZkeyFiles, downloadLatestContribution, ensureInitialSetup, uploadToS3, crossCheckFilesWithS3, checkRequiredEnvVars } from "./utils";
+import { contributionRootFolder, getContributionFolders, getZkeyFiles, downloadLatestContribution, ensureInitialSetup, uploadToS3, crossCheckFilesWithS3, checkRequiredEnvVars, isAwsCliAvailable } from "./utils";
 
 interface ContributionConfig {
   contributionNumber: string;
@@ -211,6 +211,14 @@ function main(): void {
   try {
     // Check for required environment variables
     checkRequiredEnvVars();
+
+    // Check if AWS CLI is installed
+    if (!isAwsCliAvailable()) {
+      console.error("❌ Error: AWS CLI is not installed or not in your PATH");
+      console.error("Please install AWS CLI using: npm install -g aws-cli or pip install awscli");
+      console.error("For more information, visit: https://aws.amazon.com/cli/");
+      process.exit(1);
+    }
 
     // Ensure we have the initial setup with required files
     ensureInitialSetup();

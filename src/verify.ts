@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import * as path from "path";
 import * as fs from "fs-extra";
-import { contributionRootFolder, getContributionFolders, getZkeyFiles, downloadFromS3, ensureInitialSetup, ensurePtauFile, checkRequiredEnvVars } from "./utils";
+import { contributionRootFolder, getContributionFolders, getZkeyFiles, downloadFromS3, ensureInitialSetup, ensurePtauFile, checkRequiredEnvVars, isAwsCliAvailable } from "./utils";
 
 interface VerificationResult {
   contributionFolder: string;
@@ -148,6 +148,14 @@ function main(): void {
   try {
     // Check for required environment variables
     checkRequiredEnvVars();
+
+    // Check if AWS CLI is installed
+    if (!isAwsCliAvailable()) {
+      console.error("❌ Error: AWS CLI is not installed or not in your PATH");
+      console.error("Please install AWS CLI using: npm install -g aws-cli or pip install awscli");
+      console.error("For more information, visit: https://aws.amazon.com/cli/");
+      process.exit(1);
+    }
 
     // Create the contributions directory if it doesn't exist
     fs.ensureDirSync(contributionRootFolder);
